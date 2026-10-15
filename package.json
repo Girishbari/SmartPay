@@ -1,0 +1,16 @@
+{
+  "name": "legacy-billing-automation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "db:reset": "pnpm --filter engine reset",
+    "dev": "pnpm -r --parallel --filter \"./apps/*\" dev",
+    "dev:engine": "pnpm --filter engine dev",
+    "dev:demo": "pnpm --filter demo-billing dev",
+    "dev:console": "pnpm --filter console dev",
+    "dev:agent": "pnpm --filter agent dev",
+    "build": "pnpm --filter console build",
+    "start": "pnpm --filter engine start",
+    "test":"pnpm --filter engine test && pnpm --filter agent test"
+  }
+}

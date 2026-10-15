@@ -1,0 +1,16 @@
+# Render Blueprint: one web service serves the API, the console (/) and the demo billing app (/demo/).
+# The Agent stays on a laptop: ENGINE_URL=https://<this service>.onrender.com pnpm dev:agent
+services:
+  - type: web
+    name: interlock-engine
+    runtime: node
+    plan: free
+    buildCommand: npm install -g pnpm@12.9.1 && pnpm install --frozen-lockfile && pnpm build
+    startCommand: pnpm start
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: RECORDER
+        value: tab # no screen on Render: the person records in their own browser tab
+      - key: DATABASE_URL
+        sync: false # paste the Neon/Supabase connection string in the dashboard
